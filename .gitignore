@@ -1,0 +1,7 @@
+# Input & output dirs
+/input
+/output
+
+# Misc.
+.DS_Store
+.idea/
