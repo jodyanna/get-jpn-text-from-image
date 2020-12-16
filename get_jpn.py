@@ -1,10 +1,10 @@
 import os
+import pytesseract
 
 try:
     from PIL import Image
 except ImportError:
     import Image
-import pytesseract
 
 
 def main():
@@ -12,6 +12,7 @@ def main():
         filename = os.fsdecode(file)
         text = get_jpn_from_img(filename)
         write_jpn_to_file(text, filename)
+        print(f'{filename.split("/")[2]} completed.')
 
 
 def get_jpn_from_img(image):
@@ -25,10 +26,9 @@ def get_jpn_from_img(image):
 
 
 def write_jpn_to_file(jpn, filename):
-    # Remove file extension
-    print(filename)
+    # Remove file extension, add .txt extension
     filename = filename[:-4].split('/')[2] + '.txt'
-    print(filename)
+
     with open('./output/' + filename, 'w') as outfile:
         print(jpn, file=outfile)
 
